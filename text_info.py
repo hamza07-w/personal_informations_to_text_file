@@ -41,27 +41,35 @@ nem_input = Entry(root, width=25, font=("Arial", 12), textvariable=nem_data, bor
 nem_input.grid(row=5, column=1)
 
 def submit():
+	
 	a = False
 	b = False
 	c = False
 	d = False
+	
 	get_name = fname_input.get()
 	if len(get_name) <=12 and len(get_name) >= 1:
 		a =True
+		
 	get_last = last_input.get()
 	if len(get_last) <=12 and len(get_last) >= 1:
 		b = True
+		
 	get_email = email_input.get()
 	if get_email[:10] == "@gmail.com":
 		c = True
+		
 	get_nember = nem_input.get()
 	if len(get_nember) == 10:
 		d = True
-	if a==True and b==True and d==True:
+		
+	if a and b and d:
 		with open(get_name+".txt" , "w") as file:
 			f=file.write(f"{get_name}\n{get_last}\n{get_email}\n{get_nember}\n")
+			
 	else:
-		msg = "404"
+		
+		msg = "length error."
 		messagebox.showinfo("sorry!", " ".join(msg))
 
 
